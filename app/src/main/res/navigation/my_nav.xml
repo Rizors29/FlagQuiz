@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/titleFragment">
+
+    <fragment
+        android:id="@+id/titleFragment"
+        android:name="com.example.flagquiz.TitleFragment"
+        android:label="fragment_title"
+        tools:layout="@layout/fragment_title" >
+        <action
+            android:id="@+id/action_titleFragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="com.example.flagquiz.QuizFragment"
+        android:label="fragment_quiz"
+        tools:layout="@layout/fragment_quiz" >
+        <action
+            android:id="@+id/action_quizFragment_to_scoreFragment"
+            app:destination="@id/scoreFragment" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="name" />
+    </fragment>
+    <fragment
+        android:id="@+id/scoreFragment"
+        android:name="com.example.flagquiz.ScoreFragment"
+        android:label="fragment_score"
+        tools:layout="@layout/fragment_score" >
+        <action
+            android:id="@+id/action_scoreFragment_to_titleFragment"
+            app:destination="@id/titleFragment"
+            app:popUpTo="@id/titleFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="score"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="name" />
+    </fragment>
+</navigation>
